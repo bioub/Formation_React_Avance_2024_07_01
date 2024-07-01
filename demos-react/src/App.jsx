@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,6 +8,8 @@ import Select from './Select'
 const names = ['Toto', 'Titi', 'Tata'];
 
 function App() {
+
+  const selectRef = useRef();
   const [count, setCount] = useState(0)
   const [name, setName] = useState('Titi');
 
@@ -41,8 +43,10 @@ function App() {
       {showClock && <Clock delay={delay} />}
 
 
-      <Select items={names} value={name} onValueChange={setName} />
+      <Select items={names} value={name} onValueChange={setName} renderItem={(item) => <><input type="checkbox" defaultChecked={item === name} /> {item}</>} ref={selectRef} />
       <p>Prénom sélectionné : <span className="selected">{name}</span></p>
+
+      <button onClick={() => { selectRef.current?.openMenu() }}>Open menu</button>
     </>
   )
 }

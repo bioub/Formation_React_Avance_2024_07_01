@@ -34,3 +34,20 @@ Dans le composant `src/app/components/pokemon-card.jsx` déplacer le `onClick` s
 se servira du click de la carte pour séléctionner les éléments à comparer), sur le click il faudra appeler
 la `event.stopPropagation()` (pour ne pas déclencher le click des ancetres).
 
+## Fragments + Render Props
+
+Créer un nouveau composant List dans `src/app/components/list.jsx` en partant du code suivant :
+
+```
+function List({ items, renderItem }) {
+
+}
+
+export default List;
+```
+
+Dans ce composant List nous allons boucler sur les items et afficher dans le JSX le retour de la fonction `renderItem`, ce JSX sera encapsulé dans un Fragment.
+
+Utiliser ce composant List à la place de `pokemons.map` dans le composant `src/app/pages/pokemon-list.jsx` (on verra demain l'intérêt d'avoir un composant ici)
+
+Idem pour le `.map` à la ligne 302 de `src/app/components/pokemon-form.jsx`

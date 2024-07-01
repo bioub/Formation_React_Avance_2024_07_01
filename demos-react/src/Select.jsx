@@ -1,9 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import styles from './Select.module.css';
 
-function Select({ items, value, onValueChange }) {
+const Select = forwardRef(function Select(
+  { items, value, onValueChange, renderItem },
+  ref,
+) {
   const [showMenu, setShowMenu] = useState(false);
   const hostRef = useRef();
+
+  useImperativeHandle(ref, () => ({
+    openMenu() {
+      console.log('openMenu');
+      setShowMenu(true);
+    }
+  }));
 
   useEffect(() => {
     function handleWindowClick(event) {
@@ -11,9 +27,9 @@ function Select({ items, value, onValueChange }) {
         setShowMenu(false);
       }
     }
-    window.addEventListener('click', handleWindowClick);
+    window.addEventListener('click', handleWindowClick, { capture: true });
     return () => {
-      window.removeEventListener('click', handleWindowClick);
+      window.removeEventListener('click', handleWindowClick, { capture: true });
     };
   }, []);
 
@@ -32,13 +48,13 @@ function Select({ items, value, onValueChange }) {
               className={styles.item}
               onClick={() => onValueChange(item)}
             >
-              {item}
+              {renderItem ? renderItem(item) : item}
             </div>
           ))}
         </div>
       )}
     </div>
   );
-}
+});
 
 export default Select;
