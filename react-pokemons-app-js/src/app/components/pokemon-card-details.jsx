@@ -10,7 +10,7 @@ function PokemonCardDetails({ pokemon }) {
     <div className="PokemonCardDetails">
       <h2 className="header center">{pokemon.name}</h2>
       <div className="card hoverable">
-        <div className="card-image">
+      <div className="card-image">
           <img
             src={pokemon.picture}
             alt={pokemon.name}
