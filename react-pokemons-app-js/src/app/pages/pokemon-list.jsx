@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useMemo, useCallback } from 'react';
 import PokemonCard from '../components/pokemon-card';
 import { getPokemons } from '../services/pokemon-service';
 import { Link, Navigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { CompareContext } from '../compare-context';
 
 function PokemonList() {
 
+  const [term, setTerm] = useState('');
   const { pokemonIds } = useContext(CompareContext);
 
   const [pokemons, setPokemons] = useState([]);
@@ -21,13 +22,18 @@ function PokemonList() {
     return <Navigate to={{ pathname: '/login' }} />;
   }
 
+  const renderItem = useCallback((pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} />, [])
+  // const renderItem = useMemo(() => (pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} />, [])
+  
+
+
   return (
     <div>
       <h1 className="center">Pokédex</h1>
       <div className="container">
         <div className="row">
-          <PokemonSearch />
-          <List items={pokemons} renderItem={(pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} />} />
+          <PokemonSearch term={term} setTerm={setTerm} />
+          <List items={pokemons} renderItem={renderItem} />
           {/* {pokemons.map((pokemon) => (
             <PokemonCard key={pokemon.id} pokemon={pokemon} />
           ))} */}

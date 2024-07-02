@@ -1,13 +1,20 @@
 {
 	"folders": [
 		{
+			"name": "react-pokemons-app-js",
 			"path": "react-pokemons-app-js"
 		},
 		{
+			"name": "demos-react",
 			"path": "demos-react"
 		},
 		{
+			"name": "react-communication",
 			"path": "react-communication"
+		},
+		{
+			"name": "exercices-optimisation",
+			"path": "exercices-optimisation"
 		}
 	],
 	"settings": {}

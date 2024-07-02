@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { searchPokemon } from '../services/pokemon-service';
 
-function PokemonSearch() {
-  const [term, setTerm] = useState('');
+function PokemonSearch({ term, setTerm }) {
   const [pokemons, setPokemons] = useState([]);
 
   function handleInputChange(event) {

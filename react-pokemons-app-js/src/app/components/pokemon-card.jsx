@@ -6,6 +6,7 @@ import { CompareContext } from '../compare-context';
 import classNames from 'classnames';
 
 function PokemonCard({ pokemon }) {
+  console.log('PokemonCard');
 
   const { pokemonIds, selectPokemonId } = useContext(CompareContext);
   const navigate = useNavigate();

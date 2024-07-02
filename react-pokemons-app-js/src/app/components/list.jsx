@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 function List({ items, renderItem }) {
   return (
     <>
@@ -6,4 +8,5 @@ function List({ items, renderItem }) {
   );
 }
 
-export default List;
+export default memo(List);
+// export default memo(List, (prevProps, nextProps) => prevProps.items === nextProps.items);
