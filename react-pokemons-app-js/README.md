@@ -51,3 +51,17 @@ Dans ce composant List nous allons boucler sur les items et afficher dans le JSX
 Utiliser ce composant List à la place de `pokemons.map` dans le composant `src/app/pages/pokemon-list.jsx` (on verra demain l'intérêt d'avoir un composant ici)
 
 Idem pour le `.map` à la ligne 302 de `src/app/components/pokemon-form.jsx`
+
+## Context
+
+Créer un context `CompareContext` en s'inspirant de l'exemple :
+[https://github.com/formation-tech/react-communication/tree/master/src/example-context-with-hooks](https://github.com/formation-tech/react-communication/tree/master/src/example-context-with-hooks)
+
+L'idée est de stocker les id des pokemons à comparer dans le context (en utilisant par exemple un tableau), il faudra limiter à 2 pokemons (vous pouvez augmenter la limite si vous le souhaitez mais il faudra jouer sur le nombre de colonnes dans la page `PokemonCompare`).
+
+Dans `src/app/components/pokemon-card.tsx` écouter le click de la carte (là où vous aviez déplacé le onClick dans l'exercice précédent) pour sélectionner ou déselectionner le Pokemon à comparer. Le lien vers la page `/pokemons/compare` ne devrait être actif que s'il y a 2 pokemons à comparer.
+
+## Custom Hooks
+
+Créer un custom hook `useSelectedPokemons()` qui retourne les pokemons sélectionnés dans le context et l'utiliser dans `PokemonCompare`.
+

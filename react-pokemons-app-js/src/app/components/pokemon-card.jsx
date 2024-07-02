@@ -10,7 +10,7 @@ function PokemonCard({ pokemon }) {
   }
 
   return (
-    <div className="col s6 m4" onClick={() => goToPokemon(pokemon.id ?? 0)}>
+    <div className="col s6 m4">
       <div className="card horizontal">
         <div className="card-image">
           <img src={pokemon.picture} alt={pokemon.name} />
@@ -26,6 +26,7 @@ function PokemonCard({ pokemon }) {
                 {type}
               </span>
             ))}
+            <button  onClick={() => goToPokemon(pokemon.id ?? 0)}>Détails</button>
           </div>
         </div>
       </div>
