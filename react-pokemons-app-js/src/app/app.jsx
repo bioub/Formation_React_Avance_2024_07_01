@@ -7,10 +7,12 @@ import PageNotFound from './pages/page-not-found';
 import Login from './pages/login';
 import PrivateRoute from './private-route';
 import PokemonCompare from './pages/pokemon-compare';
+import CompareProvider from './compare-context';
 
 function App() {
   return (
-    <BrowserRouter>
+    <CompareProvider>
+      <BrowserRouter>
       <nav>
         <div className="nav-wrapper teal">
           <Link to="/" className="brand-logo center">
@@ -31,6 +33,7 @@ function App() {
         <Route element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
+    </CompareProvider>
   );
 }
 

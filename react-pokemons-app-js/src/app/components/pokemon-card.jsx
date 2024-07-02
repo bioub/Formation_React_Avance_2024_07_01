@@ -1,8 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import './pokemon-card.css';
 import { formatDate, formatType } from '../helpers';
+import { useContext } from 'react';
+import { CompareContext } from '../compare-context';
+import classNames from 'classnames';
 
 function PokemonCard({ pokemon }) {
+
+  const { pokemonIds, selectPokemonId } = useContext(CompareContext);
   const navigate = useNavigate();
 
   function goToPokemon(id) {
@@ -10,7 +15,7 @@ function PokemonCard({ pokemon }) {
   }
 
   return (
-    <div className="col s6 m4">
+    <div className={classNames("col s6 m4", {'blue': pokemonIds.includes(pokemon.id)})} onClick={() => selectPokemonId(pokemon.id)}>
       <div className="card horizontal">
         <div className="card-image">
           <img src={pokemon.picture} alt={pokemon.name} />
