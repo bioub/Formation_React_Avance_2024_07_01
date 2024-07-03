@@ -8,18 +8,26 @@ class Exercise1 extends Component {
 
   boxRef = createRef();
 
+  handleClick = (event) => {
+    console.log('click Ex1');
+
+    if (this.boxRef?.current.contains(event.target)) {
+      this.setState({
+        countClickInside: this.state.countClickInside + 1,
+      });
+    } else {
+      this.setState({
+        countClickOutside: this.state.countClickOutside + 1,
+      });
+    }
+  }
+
   componentDidMount() {
-    document.addEventListener('click', (event) => {
-      if (this.boxRef.current.contains(event.target)) {
-        this.setState({
-          countClickInside: this.state.countClickInside + 1,
-        });
-      } else {
-        this.setState({
-          countClickOutside: this.state.countClickOutside + 1,
-        });
-      }
-    });
+    document.addEventListener('click', this.handleClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClick);
   }
 
   render() {

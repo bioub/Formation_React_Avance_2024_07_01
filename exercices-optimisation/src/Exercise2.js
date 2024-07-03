@@ -5,16 +5,28 @@ function Exercise2() {
   const [countClickOutside, setCountClickOutside] = useState(0);
 
   const boxRef = useRef();
+  const handleClickRef = useRef();
+
+  if (!handleClickRef.current) {
+    handleClickRef.current = (event) => {
+      console.log('click Ex2', countClickInside, countClickOutside);
+      if (boxRef.current?.contains(event.target)) {
+        setCountClickInside((c) => c + 1);
+      } else {
+        setCountClickOutside((c) => c + 1);
+      }
+    };
+  }
 
   useEffect(() => {
-    document.addEventListener('click', (event) => {
-      if (boxRef.current.contains(event.target)) {
-        setCountClickInside(countClickInside + 1);
-      } else {
-        setCountClickOutside(countClickOutside + 1);
-      }
-    });
-  }, [countClickInside, countClickOutside]);
+    console.log('addEventListener Ex2');
+    document.addEventListener('click', handleClickRef.current);
+
+    return () => {
+      console.log('removeEventListener Ex2');
+      document.removeEventListener('click', handleClickRef.current);
+    }
+  }, []);
 
   return (
     <div className="Exercise2">

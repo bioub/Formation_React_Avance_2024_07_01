@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 
 function Exercise4() {
   const [value, setValue] = useState('');
@@ -9,9 +9,9 @@ function Exercise4() {
     setTodos([{ text: value, id: Math.random() }, ...todos]);
   }
 
-  function handleDelete(todo) {
+  const handleDelete = useCallback(function handleDelete(todo) {
     setTodos(todos.filter((t) => t.id !== todo.id));
-  }
+  }, [todos]);
 
   console.log('render Exercise4');
   return (
@@ -53,7 +53,7 @@ function Exercise4() {
   );
 }
 
-function TodosList(props) {
+const TodosList = memo(function TodosList(props) {
   console.log('render TodosList');
   return (
     <div className="TodosList">
@@ -65,6 +65,6 @@ function TodosList(props) {
       ))}
     </div>
   );
-}
+})
 
 export default Exercise4;

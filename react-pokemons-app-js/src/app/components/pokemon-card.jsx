@@ -8,6 +8,9 @@ import classNames from 'classnames';
 function PokemonCard({ pokemon }) {
   console.log('PokemonCard');
 
+  const debut = Date.now();
+  while (debut + 10 > Date.now());
+
   const { pokemonIds, selectPokemonId } = useContext(CompareContext);
   const navigate = useNavigate();
 

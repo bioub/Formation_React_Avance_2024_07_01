@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PureComponent } from 'react';
 
 class Exercise3 extends Component {
   state = {
@@ -15,6 +15,11 @@ class Exercise3 extends Component {
       ],
     });
   };
+
+  handleDelete = (todo) =>
+    this.setState({
+      todos: this.state.todos.filter((t) => t.id !== todo.id),
+    })
 
   render() {
     console.log('render Exercise3');
@@ -58,11 +63,7 @@ class Exercise3 extends Component {
           </form>
           <TodosList
             todos={this.state.todos}
-            onDelete={(todo) =>
-              this.setState({
-                todos: this.state.todos.filter((t) => t.id !== todo.id),
-              })
-            }
+            onDelete={this.handleDelete}
           />
         </div>
       </div>
@@ -70,7 +71,7 @@ class Exercise3 extends Component {
   }
 }
 
-class TodosList extends Component {
+class TodosList extends PureComponent {
   render() {
     console.log('render TodosList');
     return (
