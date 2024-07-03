@@ -15,6 +15,9 @@
 		{
 			"name": "exercices-optimisation",
 			"path": "exercices-optimisation"
+		},
+		{
+			"path": "tests-unitaires"
 		}
 	],
 	"settings": {}

@@ -40,6 +40,11 @@ function Exercise6() {
         this page.
       </p>
       <div>From lib.js : {lib.short()}</div>
+      {/* <button onClick={() => {
+        import('./lib').then((lib) => {
+          console.log(lib.default.short());
+        })
+      }}>Use lib.js</button> */}
     </div>
   );
 }

@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "@testing-library/dom": "^10.3.0",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/coverage-v8": "^1.6.0",
+    "happy-dom": "^14.12.3",
+    "vitest": "^1.6.0"
+  },
+  "scripts": {
+    "test": "vitest --dom",
+    "coverage": "vitest --dom --coverage"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
