@@ -45,5 +45,5 @@ store.subscribe(() => {
 });
 
 // element.dispatchEvent(new MouseEvent('click'))
-store.dispatch({ type: 'ADD_TODO', todo: { id: Math.random(), title: 'XYZ', completed: false } })
+store.dispatch({ type: 'ADD_TQDO', todo: { id: Math.random(), title: 'XYZ', completed: false } })
 store.dispatch({ type: 'UPDATE_NEWTODO', value: 'ABCD' })

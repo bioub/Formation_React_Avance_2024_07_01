@@ -21,6 +21,9 @@
 		},
 		{
 			"path": "demos-redux"
+		},
+		{
+			"path": "react-pokemons-app-redux"
 		}
 	],
 	"settings": {}
