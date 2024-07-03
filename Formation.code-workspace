@@ -18,6 +18,9 @@
 		},
 		{
 			"path": "tests-unitaires"
+		},
+		{
+			"path": "demos-redux"
 		}
 	],
 	"settings": {}
